@@ -1,0 +1,254 @@
+@page "/system_Naisei"
+@inject HttpClient Http
+@inject IJSRuntime JS
+
+<div class="buttonproperty">
+    <div mat-button-toggle class="btn btn-primary" @onclick="(e=>CallFormEdit(EditURL))">データ追加</div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="iconitem" rowspan="3">削除</th>
+            <th class="iconitem" rowspan="3">更新</th>
+            <th rowspan="1">情報システムID </th>
+
+            <th rowspan="3">区分</th>
+
+            <th class="systemname" rowspan="3">情報システム名</th>
+            <th class="gaiyo" rowspan="3">概要</th>
+
+            <th rowspan="1">主管課室名</th>
+            <th colspan="2">情報システム責任者</th>
+            <th colspan="3">連絡担当者</th>
+            <th colspan="11">システム種別</th>
+            <th colspan="9">開発規模(開発)</th>
+            <th colspan="9">開発規模(審査)</th>
+            <th colspan="9">開発規模(その他)</th>
+            <th colspan="5">利用者属性</th>
+            <th rowspan="3">システム構成（概要フロー等）</th>
+            <th colspan="5">通信する統計センター通信回線の種別</th>
+            <th colspan="4">取り扱う情報の格付け</th>
+            <th rowspan="3">取り扱う情報の取扱制限</th>
+            <th colspan="4">調査規模</th>
+        </tr>
+
+        <tr>
+            <th rowspan="2">
+                <!-- フォームタグで囲むことで、テキストボックスでEnterを押したタイミングでsubmitイベント(フィルター)を起動させる  -->
+                <form @onsubmit=Filterfn>
+                    <input class="form-control" @bind-value="systemidfilter"/>
+                </form>
+            </th>
+            <th rowspan="2">
+                 <form @onsubmit=Filterfn>
+                <input class="form-control" @bind-value="shukankashitsufilter" >
+                </form>
+            </th>
+            <th rowspan="2">所属及び役職</th>
+            <th rowspan="2">氏名</th>
+
+            <th rowspan="2">所属及び役職</th>
+            <th rowspan="2">氏名</th>
+            <th rowspan="2">内線番号</th>
+
+            <th rowspan="2">進行管理システム</th>
+
+            <th rowspan="2" style="border-right: none;">チェックシステム</th>
+            <th style="border-left: none;"></th>
+
+            <th rowspan="2"> 訂正システム</th>
+            <th rowspan="2">個別データ作成</th>
+
+            <th rowspan="2" style="border-right: none;">サマリーシステム</th>
+            <th colspan="2" style="border-left: none;"></th>
+            <th rowspan="2" style="border-right: none;">審査システム</th>
+            <th style="border-left: none;"></th>
+
+            <th rowspan="2">その他のシステム（内容を入力）</th>
+
+            <th colspan="6">プログラム本数</th>
+            <th colspan="3">LOC</th>
+
+            <th colspan="6">プログラム本数</th>
+            <th colspan="3">LOC</th>
+
+            <th colspan="6">プログラム本数</th>
+            <th colspan="3">LOC</th>
+
+            <th rowspan="2">統計センター内</th>
+            <th rowspan="2">統計局</th>
+            <th rowspan="2">他の政府機関</th>
+            <th rowspan="2">地方公共団体</th>
+            <th rowspan="2">一般利用者（国民等）</th>
+
+            <th rowspan="2">インターネット</th>
+            <th rowspan="2">政府共通NW</th>
+            <th rowspan="2">SINET</th>
+            <th rowspan="2">LGWIN</th>
+            <th rowspan="2">その他</th>
+
+            <th rowspan="2">機密性3情報</th>
+            <th rowspan="2">機密性2情報</th>
+            <th rowspan="2">完全性2情報</th>
+            <th rowspan="2">可用性2情報</th>
+
+            <th rowspan="2">調査対象数</th>
+            <th rowspan="2">チェック数</th>
+            <th rowspan="2">リスト数</th>
+            <th rowspan="2">結果表数</th>
+        </tr>
+
+        <tr>
+            <th>データチェックプログラム作成支援システム</th>
+            <th>汎用サマリーシステム</th>
+            <th>汎用DBサマリーシステム</th>
+            <th>Adam-Report</th>
+
+            <th>VB.net</th>
+            <th>C#</th>
+            <th>ExcelVBA</th>
+            <th>Access</th>
+            <th>R</th>
+            <th>その他</th>
+
+            <th>VB.net</th>
+            <th>C#</th>
+            <th>ExcelVBA</th>
+
+            <th>VB.net</th>
+            <th>C#</th>
+            <th>ExcelVBA</th>
+            <th>Access</th>
+            <th>R</th>
+            <th>その他</th>
+
+            <th>VB.net</th>
+            <th>C#</th>
+            <th>ExcelVBA</th>
+
+            <th>VB.net</th>
+            <th>C#</th>
+            <th>ExcelVBA</th>
+            <th>Access</th>
+            <th>R</th>
+            <th>その他</th>
+
+            <th>VB.net</th>
+            <th>C#</th>
+            <th>ExcelVBA</th>
+
+        </tr>
+
+    </thead>
+    <tbody>
+            @foreach (var dataItem in CurrentData)
+            {
+            @if (@dataItem.isDelete)
+            {
+                continue;
+            }
+            <tr>
+            <!--削除ボタン-->
+            <td>
+                <button xmlns="http://www.w3.org/2000/svg" type="button" class="btn btn-light mr-1" @onclick="(e=>DeleteClickAsync(dataItem))">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor">
+                        <path fill-rule="evenodd"
+                              d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
+                    </svg>
+                </button>
+            </td>
+
+            <!--更新ボタン-->
+            <td>
+                <button xmlns="http://www.w3.org/2000/svg" type="button" class="btn btn-light mr-1" @onclick="(e=>CallFormEdit(GetUpdateURL(dataItem.id)))">
+                    <svg width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                    </svg>
+                </button>
+            </td>
+
+            <td>@dataItem.id</td>
+            <td>@dataItem.kubun</td>
+            <td>@dataItem.systemName</td>
+            <td>@dataItem.gaiyo</td>
+            <td>@dataItem.shukanKashitsu</td>
+
+            <td>@dataItem.sekinin_Shozoku</td>
+            <td>@dataItem.sekinin_Name</td>
+
+            <td>@dataItem.renraku_Shozoku</td>
+            <td>@dataItem.renraku_Name</td>
+            <td>@dataItem.renraku_Naisen</td>
+
+            <td>@dataItem.sysType_ProgressSys</td>
+            <td>@dataItem.sysType_ChkSys</td>
+            <td>@dataItem.sysType_ChkSupportSys</td>
+            <td>@dataItem.sysType_CrtSys</td>
+            <td>@dataItem.sysType_Kobetsu</td>
+            <td>@dataItem.sysType_Summary</td>
+            <td>@dataItem.sysType_HanyoSummary</td>
+            <td>@dataItem.sysType_DBSummary</td>
+            <td>@dataItem.sysType_Shinsa</td>
+            <td>@dataItem.sysType_Adam</td>
+            <td>@dataItem.sysType_Other</td>
+
+            <td>@dataItem.devKaihatsu_PGMCnt_VBNet</td>
+            <td>@dataItem.devKaihatsu_PGMCnt_CSharp</td>
+            <td>@dataItem.devKaihatsu_PGMCnt_VBA</td>
+            <td>@dataItem.devKaihatsu_PGMCnt_Access</td>
+            <td>@dataItem.devKaihatsu_PGMCnt_R</td>
+            <td>@dataItem.devKaihatsu_PGMCnt_Other</td>
+            <td>@dataItem.devKaihatsu_LOC_VBNET</td>
+            <td>@dataItem.devKaihatsu_LOC_CSharp</td>
+            <td>@dataItem.devKaihatsu_LOC_VBA</td>
+
+            <td>@dataItem.devShisa_PGMCnt_VBNET</td>
+            <td>@dataItem.devShisa_PGMCnt_CSharp</td>
+            <td>@dataItem.devShisa_PGMCnt_VBA</td>
+            <td>@dataItem.devShisa_PGMCnt_Access</td>
+            <td>@dataItem.devShisa_PGMCnt_R</td>
+            <td>@dataItem.devShisa_PGMCnt_Other</td>
+            <td>@dataItem.devShisa_LOC_VBNET</td>
+            <td>@dataItem.devShisa_LOC_Csharp</td>
+            <td>@dataItem.devShisa_LOC_VBA</td>
+
+            <td>@dataItem.devOther_PGMCnt_VBNET</td>
+            <td>@dataItem.devOther_PGMCnt_CSharp</td>
+            <td>@dataItem.devOther_PGMCnt_VBA</td>
+            <td>@dataItem.devOther_PGMCnt_Access</td>
+            <td>@dataItem.devOther_PGMCnt_R</td>
+            <td>@dataItem.devOther_PGMCnt_Other</td>
+            <td>@dataItem.devOther_LOC_VBNET</td>
+            <td>@dataItem.devOther_LOC_CSharp</td>
+            <td>@dataItem.devOther_LOC_VBA</td>
+
+            <td>@dataItem.user_Center</td>
+            <td>@dataItem.user_Kyoku</td>
+            <td>@dataItem.user_OtherSeifu</td>
+            <td>@dataItem.user_Localgovernment</td>
+            <td>@dataItem.user_Ippan</td>
+
+            <td>@dataItem.sysConfig</td>
+
+            <td>@dataItem.lineType_IE</td>
+            <td>@dataItem.lineType_SeifuNW</td>
+            <td>@dataItem.lineType_SINET</td>
+            <td>@dataItem.lineType_LGWIN</td>
+            <td>@dataItem.lineType_Other</td>
+
+            <td>@dataItem.infoType_Kimitsu3</td>
+            <td>@dataItem.infoType_Kimitsu2</td>
+            <td>@dataItem.infoType_Kanzen2</td>
+            <td>@dataItem.infoType_Kayo2</td>
+
+            <td>@dataItem.handlingInfoLimit</td>
+
+            <td>@dataItem.chosaKibo_ChosaCnt</td>
+            <td>@dataItem.chosaKibo_ChkCnt</td>
+            <td>@dataItem.chosaKibo_ListCnt</td>
+            <td>@dataItem.chosaKibo_KekkahyoCnt</td>
+        </tr>
+        }
+    </tbody>
+</table>

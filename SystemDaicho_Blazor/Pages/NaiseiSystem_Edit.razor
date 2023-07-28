@@ -1,0 +1,319 @@
+﻿@page "/system_Naisei/Edit"
+@page "/system_Naisei/Edit/{Paramid}"
+@inject HttpClient Http
+@inject IJSRuntime JS
+
+<div class="form-left">
+    <div class="p-2 w-100 bd-highlight">
+        @if (AddMode)
+        {
+            <h3>データ追加</h3> 
+            <button @onclick="(e=>AddDataAsync())" class="btn btn-primary">
+                追加
+            </button>
+        }
+        else
+        {
+            <h3>データ更新</h3>
+            <button @onclick="(e=>UpdateDataAsync())" class="btn btn-primary">
+                更新
+            </button>
+        }
+
+        <button @onclick="(e=>ReturnClick())" class="btn btn-primary">
+            戻る
+        </button>
+
+        <div class="input-group mb-12">
+            <span class="input-group-text">区分</span>
+            <select class="form-control" @bind=CurrentData.kubun>
+                <option value="センター調査系" selected>センター調査系</option>
+                <option value="センター業務系" selected>センター業務系</option>
+                <option value="センター基盤系" selected>センター基盤系</option>
+                <option value="政府基盤系" selected>政府基盤系</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-12">
+            <span class="input-group-text">情報システム名</span>
+             <input type="text" class="form-control" @bind=CurrentData.systemName>
+        </div>
+
+        <div class="form-group">
+            <span class="input-group-text">概要</span>
+            <textarea rows="5" cols="80" class="form-control" @bind=CurrentData.gaiyo></textarea>
+        </div>
+
+        <div class="input-group mb-12">
+            <span class="input-group-text">主管課室名（編集不可）</span>
+            @if (AddMode)
+            {
+                <input type="text" class="form-control" @bind=Common.UserAD.sectionName>
+            }
+            else
+            {
+                <span class="form-control">@CurrentData.shukanKashitsu</span>
+            }
+        </div>
+
+        <div class="input-group mb-12">
+            <span class="input-group-text">情報システム責任者 所属及び役職</span>
+            <input type="text" class="form-control" @bind=CurrentData.sekinin_Shozoku>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">情報システム責任者 氏名</span>
+            <input type="text" class="form-control" @bind=CurrentData.sekinin_Name>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">連絡担当者 所属及び役職</span>
+            <input type="text" class="form-control" @bind=CurrentData.renraku_Shozoku>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">連絡担当者 氏名</span>
+            <input type="text" class="form-control" @bind=CurrentData.renraku_Name>
+        </div>
+        <div class=" input-group mb-12">
+            <span class="input-group-text">連絡担当者 内線番号</span>
+            <input type="text" class="form-control" @bind=CurrentData.renraku_Naisen>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">システム種別 進行管理システム</span>
+            <input type="text" class="form-control" @bind=CurrentData.sysType_ProgressSys>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">システム種別 チェックシステム</span>
+            <input type="text" class="form-control" @bind=CurrentData.sysType_ChkSys>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">システム種別 データチェックプログラム作成支援システム</span>
+            <input type="text" class="form-control" @bind=CurrentData.sysType_ChkSupportSys>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">システム種別 訂正システム</span>
+            <input type="text" class="form-control" @bind=CurrentData.sysType_CrtSys>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">システム種別 個別データ作成</span>
+            <input type="text" class="form-control" @bind=CurrentData.sysType_Kobetsu>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">システム種別 サマリーシステム</span>
+            <input type="text" class="form-control" @bind=CurrentData.sysType_Summary>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">システム種別 汎用サマリーシステム</span>
+            <input type="text" class="form-control" @bind=CurrentData.sysType_HanyoSummary>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">システム種別 汎用DBサマリーシステム</span>
+            <input type="text" class="form-control" @bind=CurrentData.sysType_DBSummary>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">システム種別 審査システム</span>
+            <input type="text" class="form-control" @bind=CurrentData.sysType_Shinsa>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">システム種別 Adam-Report</span>
+            <input type="text" class="form-control" @bind=CurrentData.sysType_Adam>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">システム種別 その他のシステム</span>
+            <input type="text" class="form-control" @bind=CurrentData.sysType_Other>
+        </div>
+
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（開発）プログラム本数  VB.NET</span>
+            <input type="text" class="form-control" @bind=CurrentData.devKaihatsu_PGMCnt_VBNet>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（開発）プログラム本数   C#</span>
+            <input type="text" class="form-control" @bind=CurrentData.devKaihatsu_PGMCnt_CSharp>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（開発）プログラム本数  ExcelVBA</span>
+            <input type="text" class="form-control" @bind=CurrentData.devKaihatsu_PGMCnt_VBA>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（開発）プログラム本数   Access</span>
+            <input type="text" class="form-control" @bind=CurrentData.devKaihatsu_PGMCnt_Access>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（開発）プログラム本数   R</span>
+            <input type="text" class="form-control" @bind=CurrentData.devKaihatsu_PGMCnt_R>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（開発）プログラム本数   その他</span>
+            <input type="text" class="form-control" @bind=CurrentData.devKaihatsu_PGMCnt_Other>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（開発）LOC VB.net</span>
+            <input type="text" class="form-control" @bind=CurrentData.devKaihatsu_LOC_VBNET>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（開発）LOC C#</span>
+            <input type="text" class="form-control" @bind=CurrentData.devKaihatsu_LOC_CSharp>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（開発）LOC VBA</span>
+            <input type="text" class="form-control" @bind=CurrentData.devKaihatsu_LOC_VBA>
+        </div>
+
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（審査）プログラム本数   VB.NET</span>
+            <input type="text" class="form-control" @bind=CurrentData.devShisa_PGMCnt_VBNET>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（審査）プログラム本数   C#</span>
+            <input type="text" class="form-control" @bind=CurrentData.devShisa_PGMCnt_CSharp>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（審査）プログラム本数   ExcelVBA</span>
+            <input type="text" class="form-control" @bind=CurrentData.devShisa_PGMCnt_VBA>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（審査）プログラム本数   Access</span>
+            <input type="text" class="form-control" @bind=CurrentData.devShisa_PGMCnt_Access>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（審査）プログラム本数   R</span>
+            <input type="text" class="form-control" @bind=CurrentData.devShisa_PGMCnt_R>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（審査）プログラム本数   その他</span>
+            <input type="text" class="form-control" @bind=CurrentData.devShisa_PGMCnt_Other>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（審査）LOC VB.net</span>
+            <input type="text" class="form-control" @bind=CurrentData.devShisa_LOC_VBNET>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（審査）LOC C#</span>
+            <input type="text" class="form-control" @bind=CurrentData.devShisa_LOC_Csharp>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（審査）LOC VBA</span>
+            <input type="text" class="form-control" @bind=CurrentData.devShisa_LOC_VBA>
+        </div>
+
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（その他）プログラム本数   VB.NET</span>
+            <input type="text" class="form-control" @bind=CurrentData.devOther_PGMCnt_VBNET>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（その他）プログラム本数   C#</span>
+            <input type="text" class="form-control" @bind=CurrentData.devOther_PGMCnt_CSharp>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（その他）プログラム本数   ExcelVBA</span>
+            <input type="text" class="form-control" @bind=CurrentData.devOther_PGMCnt_VBA>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（その他）プログラム本数   Access</span>
+            <input type="text" class="form-control" @bind=CurrentData.devOther_PGMCnt_Access>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（その他）プログラム本数   R</span>
+            <input type="text" class="form-control" @bind=CurrentData.devOther_PGMCnt_R>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（その他）プログラム本数   その他</span>
+            <input type="text" class="form-control" @bind=CurrentData.devOther_PGMCnt_Other>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（その他）LOC VB.net</span>
+            <input type="text" class="form-control" @bind=CurrentData.devOther_LOC_VBNET>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（その他）LOC C#</span>
+            <input type="text" class="form-control" @bind=CurrentData.devOther_LOC_CSharp>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">開発規模（その他）LOC VBA</span>
+            <input type="text" class="form-control" @bind=CurrentData.devOther_LOC_VBA>
+        </div>
+
+        <div class="input-group mb-12">
+            <span class="input-group-text">利用者属性 統計センター内</span>
+            <input type="text" class="form-control" @bind=CurrentData.user_Center>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">利用者属性 統計局</span>
+            <input type="text" class="form-control" @bind=CurrentData.user_Kyoku>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">利用者属性 他の政府機関</span>
+            <input type="text" class="form-control" @bind=CurrentData.user_OtherSeifu>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">利用者属性 地方公共団体</span>
+            <input type="text" class="form-control" @bind=CurrentData.user_Localgovernment>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">利用者属性 一般利用者（国民等）</span>
+            <input type="text" class="form-control" @bind=CurrentData.user_Ippan>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">システム構成（概要フロー等）</span>
+            <input type="text" class="form-control" @bind=CurrentData.sysConfig>
+        </div>
+
+        <div class="input-group mb-12">
+            <span class="input-group-text">通信する統計センター外通信回線の種別 インターネット</span>
+            <input type="text" class="form-control" @bind=CurrentData.lineType_IE>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">通信する統計センター外通信回線の種別 政府共通NW</span>
+            <input type="text" class="form-control" @bind=CurrentData.lineType_SeifuNW>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">通信する統計センター外通信回線の種別 SINET</span>
+            <input type="text" class="form-control" @bind=CurrentData.lineType_SINET>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">通信する統計センター外通信回線の種別 LGWIN</span>
+            <input type="text" class="form-control" @bind=CurrentData.lineType_LGWIN>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">通信する統計センター外通信回線の種別 その他</span>
+            <input type="text" class="form-control" @bind=CurrentData.lineType_Other>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">取り扱う情報の格付け 機密性3情報</span>
+            <input type="text" class="form-control" @bind=CurrentData.infoType_Kimitsu3>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">取り扱う情報の格付け 機密性2情報</span>
+            <input type="text" class="form-control" @bind=CurrentData.infoType_Kimitsu2>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">取り扱う情報の格付け 完全性2情報</span>
+            <input type="text" class="form-control" @bind=CurrentData.infoType_Kanzen2>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">取り扱う情報の格付け 可用性2情報</span>
+            <input type="text" class="form-control" @bind=CurrentData.infoType_Kayo2>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">取り扱う情報の取扱制御</span>
+            <input type="text" class="form-control" @bind=CurrentData.handlingInfoLimit>
+        </div>
+
+        <div class="input-group mb-12">
+            <span class="input-group-text">調査機関 調査対象数</span>
+            <input type="text" class="form-control" @bind=CurrentData.chosaKibo_ChosaCnt>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">調査機関 チェック数</span>
+            <input type="text" class="form-control" @bind=CurrentData.chosaKibo_ChkCnt>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">調査機関 リスト数</span>
+            <input type="text" class="form-control" @bind=CurrentData.chosaKibo_ListCnt>
+        </div>
+        <div class="input-group mb-12">
+            <span class="input-group-text">調査機関 結果表数</span>
+            <input type="text" class="form-control" @bind=CurrentData.chosaKibo_KekkahyoCnt>
+        </div>
+    </div>
+</div>
+

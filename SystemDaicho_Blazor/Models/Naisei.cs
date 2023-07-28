@@ -1,0 +1,75 @@
+﻿namespace SystemDaicho_Blazor.Models
+{
+    public class Naisei
+    {
+        public string id { get; set; } = "";
+        public string kubun { get; set; } = "";
+        public string systemName { get; set; } = "";
+        public string gaiyo { get; set; } = "";
+        public string shukanKashitsu { get; set; } = "";
+        public string sekinin_Shozoku { get; set; } = "";
+        public string sekinin_Name { get; set; } = "";
+        public string renraku_Shozoku { get; set; } = "";
+        public string renraku_Name { get; set; } = "";
+        public string renraku_Naisen { get; set; } = "";
+        public string sysType_ProgressSys { get; set; } = "";
+        public string sysType_ChkSys { get; set; } = "";
+        public string sysType_ChkSupportSys { get; set; } = "";
+        public string sysType_CrtSys { get; set; } = "";
+        public string sysType_Kobetsu { get; set; } = "";
+        public string sysType_Summary { get; set; } = "";
+        public string sysType_HanyoSummary { get; set; } = "";
+        public string sysType_DBSummary { get; set; } = "";
+        public string sysType_Shinsa { get; set; } = "";
+        public string sysType_Adam { get; set; } = "";
+        public string sysType_Other { get; set; } = "";
+        public string devKaihatsu_PGMCnt_VBNet { get; set; } = "";
+        public string devKaihatsu_PGMCnt_CSharp { get; set; } = "";
+        public string devKaihatsu_PGMCnt_VBA { get; set; } = "";
+        public string devKaihatsu_PGMCnt_Access { get; set; } = "";
+        public string devKaihatsu_PGMCnt_R { get; set; } = "";
+        public string devKaihatsu_PGMCnt_Other { get; set; } = "";
+        public string devKaihatsu_LOC_VBNET { get; set; } = "";
+        public string devKaihatsu_LOC_CSharp { get; set; } = "";
+        public string devKaihatsu_LOC_VBA { get; set; } = "";
+        public string devShisa_PGMCnt_VBNET { get; set; } = "";
+        public string devShisa_PGMCnt_CSharp { get; set; } = "";
+        public string devShisa_PGMCnt_VBA { get; set; } = "";
+        public string devShisa_PGMCnt_Access { get; set; } = "";
+        public string devShisa_PGMCnt_R { get; set; } = "";
+        public string devShisa_PGMCnt_Other { get; set; } = "";
+        public string devShisa_LOC_VBNET { get; set; } = "";
+        public string devShisa_LOC_Csharp { get; set; } = "";
+        public string devShisa_LOC_VBA { get; set; } = "";
+        public string devOther_PGMCnt_VBNET { get; set; } = "";
+        public string devOther_PGMCnt_CSharp { get; set; } = "";
+        public string devOther_PGMCnt_VBA { get; set; } = "";
+        public string devOther_PGMCnt_Access { get; set; } = "";
+        public string devOther_PGMCnt_R { get; set; } = "";
+        public string devOther_PGMCnt_Other { get; set; } = "";
+        public string devOther_LOC_VBNET { get; set; } = "";
+        public string devOther_LOC_CSharp { get; set; } = "";
+        public string devOther_LOC_VBA { get; set; } = "";
+        public string user_Center { get; set; } = "";
+        public string user_Kyoku { get; set; } = "";
+        public string user_OtherSeifu { get; set; } = "";
+        public string user_Localgovernment { get; set; } = "";
+        public string user_Ippan { get; set; } = "";
+        public string sysConfig { get; set; } = "";
+        public string lineType_IE { get; set; } = "";
+        public string lineType_SeifuNW { get; set; } = "";
+        public string lineType_SINET { get; set; } = "";
+        public string lineType_LGWIN { get; set; } = "";
+        public string lineType_Other { get; set; } = "";
+        public string infoType_Kimitsu3 { get; set; } = "";
+        public string infoType_Kimitsu2 { get; set; } = "";
+        public string infoType_Kanzen2 { get; set; } = "";
+        public string infoType_Kayo2 { get; set; } = "";
+        public string handlingInfoLimit { get; set; } = "";
+        public string chosaKibo_ChosaCnt { get; set; } = "";
+        public string chosaKibo_ChkCnt { get; set; } = "";
+        public string chosaKibo_ListCnt { get; set; } = "";
+        public string chosaKibo_KekkahyoCnt { get; set; } = "";
+        public bool isDelete { get; set; } = false;
+    }
+}

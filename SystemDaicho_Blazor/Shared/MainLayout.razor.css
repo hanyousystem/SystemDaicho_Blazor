@@ -1,0 +1,19 @@
+.box {
+    border: 5px solid darkblue;
+    width: 300px;
+    margin: 10%;
+    padding: 10%;
+}
+
+.mat-button-toggle:hover {
+    background-color: dodgerblue;
+}
+
+.mat-button-toggle-checked {
+    background-color: rgb(187, 190, 195);
+}
+
+.navbar-expand-sm {
+    margin-left: -15rem;
+    background-color: whitesmoke;
+}

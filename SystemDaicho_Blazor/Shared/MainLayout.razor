@@ -1,0 +1,28 @@
+﻿@inherits LayoutComponentBase
+@inject HttpClient Http
+
+<h3 class="d-flex justify-content-center">
+    <strong style="font-size: xx-large;">
+        情報システム管理台帳
+    </strong>
+</h3>
+
+<div class="container">
+    <nav class="navbar navbar-expand-sm">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <mat-button-toggle-group>
+                    <NavLink class="nav-link" href="system_Naisei">
+                        <div mat-button-toggle class="btn btn-primary">内製システム</div>
+                    </NavLink>
+                    <NavLink class="nav-link" href="system_Gaisei">
+                        <div mat-button-toggle class="btn btn-primary">外部委託システム等</div>
+                    </NavLink>
+                </mat-button-toggle-group>
+            </li>
+        </ul>
+    </nav>
+    @Body
+</div>
+
+

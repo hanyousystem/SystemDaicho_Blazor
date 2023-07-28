@@ -1,0 +1,127 @@
+table[b-nuvf88pav5] {
+    border: 1px black solid;
+    /* margin-right:0; */
+    margin-left: -15rem;
+    width: 400rem;
+    /* collapsだと固定ヘッダの罫線が消える */
+    border-collapse: separate;
+    border-spacing: 0;
+    /* table-layout: fixed; */
+    white-space: pre-wrap;
+    box-sizing: content-box;
+    font-size: 1rem;
+}
+
+ thead th[b-nuvf88pav5]{
+  position: sticky;
+  text-align: center;
+  background-color: #fff;
+  z-index: 3;
+}
+
+tbody td[b-nuvf88pav5]{
+  position: sticky;
+  background-color: #fff;
+}
+
+/* ヘッダ固定（縦スクロール用） */
+.table-striped thead tr:nth-of-type(1) th[b-nuvf88pav5]{
+  top:0rem;
+}
+.table-striped thead tr:nth-of-type(2) th[b-nuvf88pav5]{
+  top:2.35rem;
+}
+
+.table-striped thead tr:nth-of-type(3) th[b-nuvf88pav5]{
+  top:4.68rem;
+}
+/* ヘッダ固定（横スクロール用）ヘッダ全体はZ-indexを3で設定しているため、固定させる列だけZ-indexを4にする */
+/* 削除～システム名まで固定 */
+.table-striped thead tr:nth-of-type(1) th:nth-of-type(1)[b-nuvf88pav5]{
+  left:0rem;
+  z-index: 4;
+}
+.table-striped thead tr:nth-of-type(1) th:nth-of-type(2)[b-nuvf88pav5]{
+  left:3.5rem;
+  z-index: 4;
+}
+.table-striped thead tr:nth-of-type(1) th:nth-of-type(3)[b-nuvf88pav5]{
+  left:7rem;
+  z-index: 4;
+}
+.table-striped thead tr:nth-of-type(2) th:nth-of-type(1)[b-nuvf88pav5]{
+  left:7rem;
+  z-index: 4;
+}
+.table-striped thead tr:nth-of-type(1) th:nth-of-type(4)[b-nuvf88pav5]{
+  left:15.75rem;
+  z-index: 4;
+}
+.table-striped thead tr:nth-of-type(1) th:nth-of-type(5)[b-nuvf88pav5]{
+  left:20rem;
+  z-index: 4;
+}
+
+/* ボディ固定（横スクロール用） */
+/* 削除～システム名まで固定 */
+.table-striped td:nth-of-type(1)[b-nuvf88pav5]{
+  left:0px;
+  z-index: 1;
+}
+.table-striped td:nth-of-type(2)[b-nuvf88pav5]{
+  left:3.5rem;
+  z-index: 1;
+}
+
+.table-striped td:nth-of-type(3)[b-nuvf88pav5]{
+  left:7rem;
+  z-index: 1;
+}
+.table-striped td:nth-of-type(4)[b-nuvf88pav5]{
+  left:15.75rem;
+  z-index: 1;
+}
+.table-striped td:nth-of-type(5)[b-nuvf88pav5]{
+  left:20rem;
+  z-index: 1;
+}
+
+
+th[b-nuvf88pav5] {
+  border-bottom: 1px black solid;
+  border: 1px black solid;
+}
+
+td[b-nuvf88pav5] {
+  border: 1px black solid;
+}
+
+.hide[b-nuvf88pav5] {
+  display: none;
+}
+
+.iconitem[b-nuvf88pav5]{
+  width: 50px;
+}
+
+.gaiyo[b-nuvf88pav5]{
+  width: 300px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  border-right:1px black solid;
+}
+.systemname[b-nuvf88pav5]{
+  width: 150px;
+  word-break: break-word;
+  border-right:1px black solid;
+}
+.form-control[b-nuvf88pav5]{
+  margin: auto;
+  width: 120px;
+  text-align: center;
+}
+
+.buttonproperty[b-nuvf88pav5] {
+    margin-left: -15rem;
+}
+
