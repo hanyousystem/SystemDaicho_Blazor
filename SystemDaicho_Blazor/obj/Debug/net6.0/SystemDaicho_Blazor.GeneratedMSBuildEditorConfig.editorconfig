@@ -28,6 +28,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/e-Stat/Documents/SystemDaicho_Blazor/SystemDaicho_Blazor/SystemDaicho_Blazor/Pages/GaiseiSystem.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2Fpc2VpU3lzdGVtLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-zyqc85pjlm
+
+[C:/Users/e-Stat/Documents/SystemDaicho_Blazor/SystemDaicho_Blazor/SystemDaicho_Blazor/Pages/GaiseiSystem_Edit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2Fpc2VpU3lzdGVtX0VkaXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-zmma82y3sl
+
 [C:/Users/e-Stat/Documents/SystemDaicho_Blazor/SystemDaicho_Blazor/SystemDaicho_Blazor/Pages/NaiseiSystem.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmFpc2VpU3lzdGVtLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-nuvf88pav5

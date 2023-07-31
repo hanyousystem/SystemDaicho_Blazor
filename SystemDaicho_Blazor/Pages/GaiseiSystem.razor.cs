@@ -6,15 +6,15 @@ using Microsoft.AspNetCore.Components;
 
 namespace SystemDaicho_Blazor.Pages
 {
-    public partial class NaiseiSystem
+    public partial class GaiseiSystem
     {
-        private List<Naisei> CurrentData = new();
-        private List<Naisei> CurrentDataWithoutFilter; // フィルター前のカレントデータ
+        private List<Gaisei> CurrentData= new();
+        private List<Gaisei> CurrentDataWithoutFilter; // フィルター前のカレントデータ
                                                        //双方向バインドフィルター用
         private string systemidfilter = ""; //ID
         private string shukankashitsufilter = ""; //課室名
 
-        private const string EditURL = "system_Naisei/Edit/";
+        private const string EditURL = "system_Gaisei/Edit/";
 
         private string GetUpdateURL(string id)
         {
@@ -28,9 +28,9 @@ namespace SystemDaicho_Blazor.Pages
             await RefleshDataAsync();
         }
 
-        private async Task<List<Naisei>> GetCurrentDataAsync()
+        private async Task<List<Gaisei>> GetCurrentDataAsync()
         {
-            return (await Http.GetFromJsonAsync<Naisei[]>(Common.URLs.API_Naisei)).ToList();
+            return (await Http.GetFromJsonAsync<Gaisei[]>(Common.URLs.API_Gaisei)).ToList();
         }
 
         private async Task RefleshDataAsync()
@@ -53,7 +53,7 @@ namespace SystemDaicho_Blazor.Pages
 
         }
 
-        private async Task DeleteClickAsync(Naisei data)
+        private async Task DeleteClickAsync(Gaisei data)
         {
             if (data.shukanKashitsu != Common.UserAD.sectionName)
             {
@@ -64,8 +64,8 @@ namespace SystemDaicho_Blazor.Pages
             if (await JS.InvokeAsync<bool>("confirm", $"{data.id}を削除しますか？"))
             {
                 data.isDelete = true;
-                await Http.PutAsJsonAsync(Common.URLs.API_Naisei + $"/{data.id}", data);
-                await Http.PostAsJsonAsync(Common.URLs.Log, Common.CreateLogData("削除", "1", data.id));
+                await Http.PutAsJsonAsync(Common.URLs.API_Gaisei + $"/{data.id}", data);
+                await Http.PostAsJsonAsync(Common.URLs.Log, Common.CreateLogData("削除", Common.DaichoType.Gaisei.ToString(), data.id));
                 await RefleshDataAsync();
             }
         }

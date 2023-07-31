@@ -1,0 +1,137 @@
+table[b-zyqc85pjlm] {
+    border: 1px black solid;
+    /* margin-right:0; */
+    margin-left: -15rem;
+    width: 595rem;
+    /* collapsだと固定ヘッダの罫線が消える */
+    border-collapse: separate;
+    border-spacing: 0;
+    /* table-layout: fixed; */
+    white-space: pre-wrap;
+    box-sizing: content-box;
+    font-size: 1rem;
+}
+
+thead th[b-zyqc85pjlm] {
+    position: sticky;
+    text-align: center;
+    background-color: #fff;
+    z-index: 3;
+}
+
+tbody td[b-zyqc85pjlm] {
+    position: sticky;
+    background-color: #fff;
+}
+
+/* ヘッダ固定（縦スクロール用） */
+.table-striped thead tr:nth-of-type(1) th[b-zyqc85pjlm] {
+    top: 0rem;
+}
+
+.table-striped thead tr:nth-of-type(2) th[b-zyqc85pjlm] {
+    top: 2.35rem;
+}
+
+.table-striped thead tr:nth-of-type(3) th[b-zyqc85pjlm] {
+    top: 4.68rem;
+}
+
+/* ヘッダ固定（横スクロール用）ヘッダ全体はZ-indexを3で設定しているため、固定させる列だけZ-indexを4にする */
+/* 削除～システム名まで固定 */
+.table-striped thead tr:nth-of-type(1) th:nth-of-type(1)[b-zyqc85pjlm] {
+    left: 0rem;
+    z-index: 4;
+}
+
+.table-striped thead tr:nth-of-type(1) th:nth-of-type(2)[b-zyqc85pjlm] {
+    left: 3.5rem;
+    z-index: 4;
+}
+
+.table-striped thead tr:nth-of-type(1) th:nth-of-type(3)[b-zyqc85pjlm] {
+    left: 7rem;
+    z-index: 4;
+}
+
+.table-striped thead tr:nth-of-type(2) th:nth-of-type(1)[b-zyqc85pjlm] {
+    left: 7rem;
+    z-index: 4;
+}
+
+.table-striped thead tr:nth-of-type(1) th:nth-of-type(4)[b-zyqc85pjlm] {
+    left: 15.6rem;
+    z-index: 4;
+}
+
+.table-striped thead tr:nth-of-type(1) th:nth-of-type(5)[b-zyqc85pjlm] {
+    left: 19.75rem;
+    z-index: 4;
+}
+
+/* ボディ固定（横スクロール用） */
+/* 削除～システム名まで固定 */
+.table-striped td:nth-of-type(1)[b-zyqc85pjlm] {
+    left: 0px;
+    z-index: 1;
+}
+
+.table-striped td:nth-of-type(2)[b-zyqc85pjlm] {
+    left: 3.5rem;
+    z-index: 1;
+}
+
+.table-striped td:nth-of-type(3)[b-zyqc85pjlm] {
+    left: 7rem;
+    z-index: 1;
+}
+
+.table-striped td:nth-of-type(4)[b-zyqc85pjlm] {
+    left: 15.6rem;
+    z-index: 1;
+}
+
+.table-striped td:nth-of-type(5)[b-zyqc85pjlm] {
+    left: 19.75rem;
+    z-index: 1;
+}
+
+
+th[b-zyqc85pjlm] {
+    border-bottom: 1px black solid;
+    border: 1px black solid;
+}
+
+td[b-zyqc85pjlm] {
+    border: 1px black solid;
+}
+
+.hide[b-zyqc85pjlm] {
+    display: none;
+}
+
+.iconitem[b-zyqc85pjlm] {
+    width: 50px;
+}
+
+.systemname[b-zyqc85pjlm] {
+    width: 150px;
+    word-break: break-word;
+    border-right: 1px black solid;
+}
+
+.gaiyo[b-zyqc85pjlm] {
+    width: 300px;
+    word-break: break-word;
+    border-right: 1px black solid;
+}
+
+.form-control[b-zyqc85pjlm] {
+    margin: auto;
+    width: 120px;
+    text-align: center;
+}
+
+.buttonproperty[b-zyqc85pjlm] {
+    margin-left: -15rem;
+}
