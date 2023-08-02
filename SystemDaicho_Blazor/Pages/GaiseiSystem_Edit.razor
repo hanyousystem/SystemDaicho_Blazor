@@ -3,9 +3,11 @@
 @inject HttpClient Http
 @inject IJSRuntime JS
 
-<div class="form-left">
 
+<div class="form-left">
+  
     <div class="p-2 w-100 bd-highlight">
+   
         @if (AddMode)
         {
             <h3>データ追加</h3>
@@ -25,6 +27,13 @@
             戻る
         </button>
 
+        @if (AddMode==false)
+        {
+            <div class="input-group mb-12">
+                <span class="input-group-text">情報システムID</span>
+                <span class="form-control">@CurrentData.id</span>
+            </div>
+        }
         <div class="input-group mb-12">
             <span class="input-group-text">区分</span>
             <select class="form-control" @bind=CurrentData.kubun>
@@ -49,7 +58,7 @@
             <span class="input-group-text">主管課室名（編集不可）</span>
             @if (AddMode)
             {
-                <input type="text" class="form-control" @bind=Common.UserAD.sectionName>
+                <span class="form-control">@Common.UserAD.sectionName</span>
             }
             else
             {

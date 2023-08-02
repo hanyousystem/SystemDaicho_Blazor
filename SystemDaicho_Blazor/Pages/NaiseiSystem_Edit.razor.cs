@@ -9,7 +9,7 @@ namespace SystemDaicho_Blazor.Pages
 {
     public partial class NaiseiSystem_Edit
     {
-        private Naisei CurrentData;
+        private Naisei CurrentData = new();
         private bool AddMode;
 
         [Parameter]

@@ -9,7 +9,7 @@ namespace SystemDaicho_Blazor.Pages
 {
     public partial class GaiseiSystem_Edit
     {
-        private Gaisei CurrentData;
+        private Gaisei CurrentData = new();
         private bool AddMode;
 
         [Parameter]
