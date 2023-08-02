@@ -113,7 +113,6 @@
         <div class="input-group mb-12">
             <span class="input-group-text">利用者属性 地方公共団体</span>
             <select class="form-control" @bind=CurrentData.user_Localgovernment>
-                <option hidden>{{SystemList.user_Localgovernment}}</option>
                 <option value="有り" selected>有り</option>
                 <option value="ー" selected>ー</option>
             </select>
@@ -122,7 +121,6 @@
         <div class="input-group mb-12">
             <span class="input-group-text">利用者属性 一般利用者（国民等）</span>
             <select class="form-control" @bind=CurrentData.user_Ippan>
-                <option hidden>{{SystemList.user_Ippan}}</option>
                 <option value="有り" selected>有り</option>
                 <option value="ー" selected>ー</option>
             </select>
@@ -174,7 +172,6 @@
         <div class="input-group mb-12">
             <span class="input-group-text">取り扱う情報の格付 可用性２情報</span>
             <select class="form-control" @bind=CurrentData.infoType_Kayo2>
-                <option hidden>{{SystemList.infoType_Kayo2}}</option>
                 <option value="有り" selected>有り</option>
                 <option value="ー" selected>ー</option>
             </select>
@@ -186,7 +183,6 @@
         <div class="input-group mb-12">
             <span class="input-group-text">個人情報 個人情報の取扱</span>
             <select class="form-control" @bind=CurrentData.kojin_Toriatsukai>
-                <option hidden>{{SystemList.kojin_Toriatsukai}}</option>
                 <option value="有り" selected>有り</option>
                 <option value="ー" selected>ー</option>
             </select>
@@ -194,7 +190,6 @@
         <div class="input-group mb-12">
             <span class="input-group-text">個人情報 特定個人情報の取扱</span>
             <select class="form-control" @bind=CurrentData.kojin_Tokutei>
-                <option hidden>{{SystemList.kojin_Tokutei}}</option>
                 <option value="有り" selected>有り</option>
                 <option value="ー" selected>ー</option>
             </select>
@@ -202,7 +197,6 @@
         <div class="input-group mb-12">
             <span class="input-group-text">システム種別</span>
             <select class="form-control" @bind=CurrentData.systemType>
-                <option hidden>{{SystemList.systemType}}</option>
                 <option value="基盤のみ" selected>基盤のみ</option>
                 <option value="基盤＋アプリケーション" selected>基盤＋アプリケーション</option>
                 <option value="アプリケーションのみ" selected>アプリケーションのみ</option>
@@ -211,7 +205,6 @@
         <div class="input-group mb-12">
             <span class="input-group-text">開発方式 開発方式</span>
             <select class="form-control" @bind=CurrentData.dev_Way>
-                <option hidden>{{SystemList.dev_Way}}</option>
                 <option value="スクラッチ開発" selected>スクラッチ開発</option>
                 <option value="ソフトウェアパッケージカスタマイズ開発" selected>ソフトウェアパッケージカスタマイズ開発</option>
                 <option value="スクラッチ・カスタマイズ開発の混合" selected>スクラッチ・カスタマイズ開発の混合</option>
@@ -250,7 +243,6 @@
         <div class="input-group mb-12">
             <span class="input-group-text">通信する統計センター外通信回線の種別 インターネット</span>
             <select class="form-control" @bind=CurrentData.lineType_IE>
-                <option hidden>{{SystemList.lineType_IE}}</option>
                 <option value="有り" selected>有り</option>
                 <option value="ー" selected>ー</option>
             </select>
@@ -258,7 +250,6 @@
         <div class="input-group mb-12">
             <span class="input-group-text">通信する統計センター外通信回線の種別 政府共通NW</span>
             <select class="form-control" @bind=CurrentData.lineType_SeifuNW>
-                <option hidden>{{SystemList.lineType_SeifuNW}}</option>
                 <option value="有り" selected>有り</option>
                 <option value="ー" selected>ー</option>
             </select>
@@ -266,7 +257,6 @@
         <div class="input-group mb-12">
             <span class="input-group-text">通信する統計センター外通信回線の種別 SINET</span>
             <select class="form-control" @bind=CurrentData.lineType_SINET>
-                <option hidden>{{SystemList.lineType_SINET}}</option>
                 <option value="有り" selected>有り</option>
                 <option value="ー" selected>ー</option>
             </select>
@@ -274,7 +264,6 @@
         <div class="input-group mb-12">
             <span class="input-group-text">通信する統計センター外通信回線の種別 LGWAN</span>
             <select class="form-control" @bind=CurrentData.lineType_LGWIN>
-                <option hidden>{{SystemList.lineType_LGWIN}}</option>
                 <option value="有り" selected>有り</option>
                 <option value="ー" selected>ー</option>
             </select>
@@ -282,7 +271,6 @@
         <div class="input-group mb-12">
             <span class="input-group-text">通信する統計センター外通信回線の種別 その他</span>
             <select class="form-control" @bind=CurrentData.lineType_Other>
-                <option hidden>{{SystemList.lineType_Other}}</option>
                 <option value="有り" selected>有り</option>
                 <option value="ー" selected>ー</option>
             </select>
@@ -298,7 +286,6 @@
         <div class="input-group mb-12">
             <span class="input-group-text">クラウドサービス利用情報 利用有無</span>
             <select class="form-control" @bind=CurrentData.cloudService_UserUmu>
-                <option hidden>{{SystemList.cloudService_UserUmu}}</option>
                 <option value="有り" selected>有り</option>
                 <option value="無し" selected>無し</option>
             </select>
@@ -334,7 +321,6 @@
         <div class="input-group mb-12">
             <span class="input-group-text">クラウドサービス利用情報 取り扱う情報の格付 機密性３情報</span>
             <select class="form-control" @bind=CurrentData.cloudService_Kimitsu3>
-                <option hidden>{{SystemList.cloudService_Kimitsu3}}</option>
                 <option value="有り" selected>有り</option>
                 <option value="ー" selected>ー</option>
             </select>
@@ -342,7 +328,6 @@
         <div class="input-group mb-12">
             <span class="input-group-text">クラウドサービス利用情報 取り扱う情報の格付 機密性２情報</span>
             <select class="form-control" @bind=CurrentData.cloudService_Kimitsu2>
-                <option hidden>{{SystemList.cloudService_Kimitsu2}}</option>
                 <option value="有り" selected>有り</option>
                 <option value="ー" selected>ー</option>
             </select>
@@ -350,7 +335,6 @@
         <div class="input-group mb-12">
             <span class="input-group-text">クラウドサービス利用情報 取り扱う情報の格付 完全性２情報</span>
             <select class="form-control" @bind=CurrentData.cloudService_Kanzen2>
-                <option hidden>{{SystemList.cloudService_Kanzen2}}</option>
                 <option value="有り" selected>有り</option>
                 <option value="ー" selected>ー</option>
             </select>
@@ -358,7 +342,6 @@
         <div class="input-group mb-12">
             <span class="input-group-text">クラウドサービス利用情報 取り扱う情報の格付 可用性２情報</span>
             <select class="form-control" @bind=CurrentData.cloudService_Kayo2>
-                <option hidden>{{SystemList.cloudService_Kayo2"}}</option>
                 <option value="有り" selected>有り</option>
                 <option value="ー" selected>ー</option>
             </select>

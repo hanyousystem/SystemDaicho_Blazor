@@ -1,0 +1,19 @@
+.box[b-a2vwdpja2r] {
+    border: 5px solid darkblue;
+    width: 300px;
+    margin: 10%;
+    padding: 10%;
+}
+
+.mat-button-toggle:hover[b-a2vwdpja2r] {
+    background-color: dodgerblue;
+}
+
+.mat-button-toggle-checked[b-a2vwdpja2r] {
+    background-color: rgb(187, 190, 195);
+}
+
+.navbar-expand-sm[b-a2vwdpja2r] {
+    margin-left: -15rem;
+    background-color: whitesmoke;
+}
